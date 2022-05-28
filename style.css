@@ -1,0 +1,30 @@
+body {
+  background-color: #f9f7fe;
+  color: #3b3566;
+}
+
+.container {
+  width: 265px;
+}
+
+.btn-primary {
+  background-color: #3b3566;
+  border-color: #3b3566;
+  color: #f9f7fe;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: #4e4688;
+  border-color: #4e4688;
+  box-shadow: none;
+}
+
+.btn-primary:focus-visible {
+  outline: 0;
+}
+
+.btn-primary:active:focus {
+  box-shadow: none;
+}

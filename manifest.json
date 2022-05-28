@@ -1,0 +1,21 @@
+{
+  "name": "SheCodes Homework Counter",
+  "version": "1.0.0",
+  "description": "Auto increments while reviewing homeworks.",
+  "manifest_version": 3,
+  "author": "João Lopes",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "SheCodes Homework Counter"
+  },
+  "icons": {
+    "16": "assets/ext-logo16.png",
+    "32": "assets/ext-logo32.png",
+    "48": "assets/ext-logo48.png",
+    "128": "assets/ext-logo.png"
+  },
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "permissions": ["tabs", "storage"]
+}
