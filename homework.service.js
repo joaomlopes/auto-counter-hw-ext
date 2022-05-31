@@ -1,6 +1,7 @@
 /** @private */
 const HOMEWORKS_KEY = "homeworks";
 const HOMEWORKS_ID_KEY = "homeworksId";
+const APPROVAL_DIFF = 600000; // 10 minutes
 
 /** Shared logic */
 class HomeworkService {
@@ -80,7 +81,7 @@ class HomeworkService {
 
   static saveID = async (id) => {
     const ids = await this.getHomeworkIDs();
-    const updatedIds = [...ids, id];
+    const updatedIds = [...ids, { id, date: Date.now() }];
 
     const promise = toPromise((resolve, reject) => {
       chrome.storage.local.set({ [HOMEWORKS_ID_KEY]: updatedIds }, () => {
@@ -114,7 +115,7 @@ class HomeworkService {
         if (chrome.runtime.lastError) reject(chrome.runtime.lastError);
 
         const researches = result.homeworksId ?? [];
-        resolve(researches[researches.length - 1]);
+        resolve(researches[researches.length - 1].id);
       });
     });
 
@@ -131,8 +132,11 @@ class HomeworkService {
         if (chrome.runtime.lastError) reject(chrome.runtime.lastError);
 
         const researches = result.homeworksId ?? [];
-        const checked = researches.includes(currentID);
-        resolve(checked);
+        const exists = researches.some(
+          (obj) => obj.id === currentID && Date.now() - obj.date < APPROVAL_DIFF
+        );
+
+        resolve(exists);
       });
     });
 

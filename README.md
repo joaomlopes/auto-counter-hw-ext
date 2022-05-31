@@ -12,3 +12,7 @@ On your Chrome window, access `chrome://extensions` and then on the top right en
 Click on the top left button "Load unpacked" and choose the location of the folder. Click [here](https://developer.chrome.com/docs/extensions/mv3/getstarted/#unpacked) for more details.
 
 The extension will show up on the extensions page and you're ready to start using it.
+
+## Constraints
+
+To avoid increment when navigating back and forth on already reviewed homeworks, in case there's a resubmission and that resubmission is in the last 10 min, then it won't increment the counter automatically. If it's older than 10min, it'll increment the counter.
